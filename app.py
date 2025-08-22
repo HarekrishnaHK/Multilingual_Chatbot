@@ -31,6 +31,44 @@ LANGUAGES = {
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
+# ✅ Function to handle sending messages
+def send_message():
+    user_input = st.session_state.user_input
+    lang = st.session_state.lang
+
+    if user_input.strip():
+        st.session_state.messages.append(("user", user_input))
+
+        # Call Sarvam AI API
+        headers = {
+            "Authorization": f"Bearer {SARVAM_API_KEY}",
+            "Content-Type": "application/json"
+        }
+        payload = {
+            "model": "sarvam-m",
+            "messages": [{"role": "user", "content": user_input}]
+        }
+        response = requests.post("https://api.sarvam.ai/v1/chat/completions", headers=headers, json=payload)
+
+        if response.status_code == 200:
+            reply = response.json()["choices"][0]["message"]["content"]
+
+            # Translate if selected language is not English
+            if LANGUAGES[lang] != "en-IN":
+                reply = client.text.translate(
+                    input=reply,
+                    source_language_code="en-IN",
+                    target_language_code=LANGUAGES[lang]
+                ).translated_text
+
+            st.session_state.messages.append(("assistant", reply))
+        else:
+            st.error(f"API Error: {response.status_code}")
+
+        # Clear input after sending
+        st.session_state.user_input = ""
+
+
 # Display Logo (top-left)
 st.markdown(
     """
@@ -112,8 +150,8 @@ col1, col2 = st.columns([1, 2])
 # Left Panel (Language Selection)
 with col1:
     st.markdown('<div class="input-block">', unsafe_allow_html=True)
-    st.header("😶‍🌫️ Select Langeage 👇")
-    lang = st.selectbox("Language", list(LANGUAGES.keys()))
+    st.header("😶‍🌫️ Select Language 👇")
+    st.session_state.lang = st.selectbox("Language", list(LANGUAGES.keys()))
     st.markdown('</div>', unsafe_allow_html=True)
 
 # Right Panel (Chat + Input)
@@ -134,34 +172,6 @@ with col2:
             st.markdown(f"<div class='chat-message assistant'><div class='assistant-msg'>{msg}</div></div>", unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
-    # 🔽 Input box & Send button
-    user_input = st.text_area("Enter your message", key="user_input")
-    if st.button("Send"):
-        if user_input.strip():
-            st.session_state.messages.append(("user", user_input))
-
-            # Call Sarvam AI API
-            headers = {
-                "Authorization": f"Bearer {SARVAM_API_KEY}",
-                "Content-Type": "application/json"
-            }
-            payload = {
-                "model": "sarvam-m",
-                "messages": [{"role": "user", "content": user_input}]
-            }
-            response = requests.post("https://api.sarvam.ai/v1/chat/completions", headers=headers, json=payload)
-
-            if response.status_code == 200:
-                reply = response.json()["choices"][0]["message"]["content"]
-
-                # Translate if selected language is not English
-                if LANGUAGES[lang] != "en-IN":
-                    reply = client.text.translate(
-                        input=reply,
-                        source_language_code="en-IN",
-                        target_language_code=LANGUAGES[lang]
-                    ).translated_text
-
-                st.session_state.messages.append(("assistant", reply))
-            else:
-                st.error(f"API Error: {response.status_code}")
+    # Input & Send button with callback
+    st.text_area("Enter your message", key="user_input")
+    st.button("Send", on_click=send_message)
