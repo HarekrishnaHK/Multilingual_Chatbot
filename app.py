@@ -175,3 +175,5 @@ with col2:
     # Input & Send button with callback
     st.text_area("Enter your message", key="user_input")
     st.button("Send", on_click=send_message)
+
+
