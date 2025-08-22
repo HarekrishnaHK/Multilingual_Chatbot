@@ -70,9 +70,7 @@ Multilingual\_chat/
 
 ## 🖼️ Preview
 
-## 🖼️ Preview
-
-[![App Screenshot](preview.png)](https://multilanguage-ai-chatbot.onrender.com)
+[![App](assets/preview.png)](https://multilanguage-ai-chatbot.onrender.com)
 
 
 ---
