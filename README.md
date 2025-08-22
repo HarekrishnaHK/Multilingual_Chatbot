@@ -1,11 +1,16 @@
-Got it 👍 You want a **short and clean README** without too much clutter.
-Here’s a compact version tailored to your project 👇
+Perfect 👍 I’ll update your compact **README.md** with:
+
+* ✅ A working **Live Demo** link (clickable)
+* ✅ A **screenshot preview section** so people can see your app UI
+
+Here’s the improved version 👇
 
 ```markdown
 # 🌍 Multilingual Chatbot (Sarvam AI + Streamlit)
 
 A multilingual chatbot built with **Sarvam AI API** and **Streamlit**, supporting multiple Indian languages.  
-👉 Live Demo: [https://multilanguage-hk-bot.onrender.com](https://multilanguage-hk-bot.onrender.com)
+
+👉 [**Live Demo**](https://multilanguage-hk-bot.onrender.com)
 
 ---
 
@@ -63,4 +68,14 @@ Multilingual\_chat/
 
 ---
 
+## 🖼️ Preview
+
+## 🖼️ Preview
+
+[![App Screenshot](preview.png)](https://multilanguage-ai-chatbot.onrender.com)
+
+
+---
+
 🚀 Start chatting in your language!
+
