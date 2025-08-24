@@ -1,27 +1,25 @@
-Perfect 👍 I’ll update your compact **README.md** with:
-
-* ✅ A working **Live Demo** link (clickable)
-* ✅ A **screenshot preview section** so people can see your app UI
-
-Here’s the improved version 👇
+Here’s a polished **README.md** for your chatbot project 👇
 
 ```markdown
-# 🌍 Multilingual Chatbot (Sarvam AI + Streamlit)
+# 🌍 Multilingual Chatbot (SarvamAI + Gemini + Streamlit)
 
-A multilingual chatbot built with **Sarvam AI API** and **Streamlit**, supporting multiple Indian languages.  
+A modern multilingual chatbot built with **SarvamAI API**, **Google Gemini**, and **Streamlit**, supporting multiple Indian languages with real-time translation.  
 
 👉 [**Live Demo**](https://multilanguage-hk-bot.onrender.com)
 
 ---
 
 ## 📂 Project Structure
+
 ```
 
 Multilingual\_chat/
-│── .env
-│── requirements.txt
-│── app.py
-│── README.md
+│── app.py              # Main Streamlit app
+│── requirements.txt    # Dependencies
+│── .env                # API keys
+│── README.md           # Documentation
+│── assets/
+└── preview\.png     # App screenshot
 
 ````
 
@@ -29,26 +27,32 @@ Multilingual\_chat/
 
 ## ⚙️ Setup
 
-1. **Clone repo & install dependencies**
+1. **Clone the repository**
    ```bash
    git clone <your_repo_url>
    cd Multilingual_chat
-   pip install -r requirements.txt
 ````
 
-2. **Add API key** → create `.env` file:
+2. **Install dependencies**
 
-   ```ini
-   SARVAM_API_KEY=your_api_key_here
+   ```bash
+   pip install -r requirements.txt
    ```
 
-3. **Run app**
+3. **Set up environment variables** → create a `.env` file:
+
+   ```ini
+   SARVAM_API_KEY=your_sarvam_api_key
+   GEMINI_API_KEY=your_gemini_api_key
+   ```
+
+4. **Run the app**
 
    ```bash
    streamlit run app.py
    ```
 
-   Open 👉 `http://localhost:8501`
+   Open in your browser 👉 [http://localhost:8501](http://localhost:8501)
 
 ---
 
@@ -68,12 +72,22 @@ Multilingual\_chat/
 
 ---
 
-## 🖼️ Preview
+## ✨ Features
 
-[![App](assets/preview.png)](https://multilanguage-ai-chatbot.onrender.com)
-
+* 🔄 **Translate seamlessly** between input/output languages
+* 🤖 **Choose AI backend**: SarvamAI or Gemini
+* 📖 **Built-in tools**: Date, time, and Wikipedia summaries
+* 🧹 **Clear chat history** with one click
+* 📱 **Responsive design** with custom styling
 
 ---
 
-🚀 Start chatting in your language!
+## 🖼️ Preview
 
+[![App Screenshot](assets/preview.png)](https://multilanguage-hk-bot.onrender.com)
+
+---
+
+🚀 Start chatting in your own language today!
+
+```

@@ -1,4 +1,7 @@
 streamlit
-sarvamai
 python-dotenv
+google-generativeai
 requests
+sarvamai
+
+wikipedia
